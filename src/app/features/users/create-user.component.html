@@ -1,3 +1,22 @@
-<p>
-  create-user works!
-</p>
+<div>
+    <h4>Create New User</h4>
+    <form #userCreateForm="ngForm" (ngSubmit)="onSubmit(userCreateForm.value)">
+      <div class="form-group">
+        <label for="userName">User Name:</label>
+        <input type="text" class="form-control" id="userName" placeholder="Enter User Name..." name="userName" ngModel required>
+      </div>
+      <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
+      <button type="submit" class="btn btn-primary" [disabled]="chosenGroupIds.length === 0 || !userCreateForm.valid">Create</button>
+    </form>
+    <p class="lead"><span class="font-weight-bold">Note:</span> You must add User to a Group.</p>
+    <p class="lead">Check/uncheck each box to edit user membership into Group.</p>
+    <ul class="list-group" *ngFor="let group of groups">
+      <li class="list-group-item border-success" [ngClass]="{active: chosenGroupIds.includes(group.id)}">
+        {{group?.groupName}}
+        <div class="custom-control custom-checkbox custom-control-inline float-right">
+          <input type="checkbox" class="custom-control-input" id="{{'customCheck'+group.id}}" [checked]="chosenGroupIds.includes(group.id)" (change)="updateChecked(group, $event)">
+          <label class="custom-control-label" for="{{'customCheck'+group.id}}"></label>
+        </div>
+      </li>
+    </ul>    
+</div>
