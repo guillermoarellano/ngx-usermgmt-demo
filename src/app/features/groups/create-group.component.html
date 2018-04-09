@@ -1,3 +1,11 @@
-<p>
-  create-group works!
-</p>
+<div>
+    <h4>Create New Group</h4>
+    <form #groupCreateForm="ngForm" (ngSubmit)="onSubmit(groupCreateForm.value)">
+      <div class="form-group">
+        <label for="groupName">Group Name</label>
+        <input type="text" class="form-control" id="groupName" placeholder="Enter Group Name..." name="groupName" ngModel required>
+      </div>
+      <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
+      <button type="submit" class="btn btn-primary" [disabled]="!groupCreateForm.valid">Create</button>
+    </form>
+</div>
