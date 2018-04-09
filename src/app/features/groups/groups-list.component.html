@@ -1,3 +1,18 @@
-<p>
-  groups-list works!
-</p>
+<div>
+    <h4>Groups List</h4>
+    <div class="clearfix">
+      <button type="button" class="btn btn-primary float-right" [routerLink]="['/groups/new']">Add New Group</button>
+    </div>
+    <h6>Search Groups</h6>
+    <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+    <hr>
+    <ul class="list-group" *ngFor="let group of groups">
+      <li class="list-group-item">
+        <a [routerLink]="['/groups', group.id]">{{group.groupName}}</a>
+        <button type="button" class="btn btn-danger btn-sm float-right"
+                (click)="removeGroup(group)"
+                [disabled]="group.groupMembers.length !== 0">Remove
+        </button>
+      </li>
+    </ul>
+  </div>
