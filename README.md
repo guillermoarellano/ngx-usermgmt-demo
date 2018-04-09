@@ -28,17 +28,17 @@ These are the mock REST endpoints used for back-end database for Users and Group
 
 * GET /api/users --> get all of the users
 * GET /api/users/${id} --> get a specific user
-* GET /api/users/?userName=${term} --> search for a user using 'term' value
-* POST /api/users/${userName} --> add a user to Users list; response is success with ID number created
-* PUT /api/users/${id} --> Update a user detail; response is success with ID number
-* DELETE /api/users/${id} --> Delete a user from Users list; response is success or failure
+* GET /api/users/?userName=${term} --> search for a user by name using 'term' value
+* POST /api/users/${userName} --> add a user to Users list
+* PUT /api/users/${id} --> Update a user detail
+* DELETE /api/users/${id} --> Delete a user from Users list
 
 * GET /api/groups --> get all of the groups in the database
 * GET /api/groups/${id} --> get a specific user
-* GET /api/users/?groupName=${term} --> search for a user using 'term' value
-* POST /api/groups/${groupName} --> add a user to Users list; response is success with ID number created
-* PUT /api/groups/${id} --> Update a user detail; response is success with ID number
-* DELETE /api/groups/${id} --> Delete a user from Users list; response is success or failure
+* GET /api/users/?groupName=${term} --> search for a group by name using 'term' value
+* POST /api/groups/${groupName} --> add a user to Users list
+* PUT /api/groups/${id} --> Update a user detail
+* DELETE /api/groups/${id} --> Delete a user from Users list
 
 ## Entity Models
 
@@ -62,10 +62,6 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
 ## Further help
 
