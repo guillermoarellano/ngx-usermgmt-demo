@@ -6,15 +6,15 @@ import { WelcomeComponent } from './home/welcome.component';
 const routes: Routes = [
   { path: 'welcome', component: WelcomeComponent },
   {
-    path: 'users', 
+    path: 'users',
     loadChildren: 'app/features/users/user.module#UserModule'
   },
   {
-    path: 'groups', 
+    path: 'groups',
     loadChildren: 'app/features/groups/group.module#GroupModule'
   },
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
-//TODO { path: '**', component: PageNotFoundComponent } 
+// TODO { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

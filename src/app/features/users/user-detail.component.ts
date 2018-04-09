@@ -25,7 +25,7 @@ export class UserDetailComponent implements OnInit {
         this.user = user;
         this.groupService.getGroups().subscribe(
           (groups) => {
-            this.usersGroups = groups.filter(groups => groups.groupMembers.indexOf(this.user.id) !== -1);
+            this.usersGroups = groups.filter(obj => obj.groupMembers.indexOf(this.user.id) !== -1);
           },
           (err) => console.log(err)
         );

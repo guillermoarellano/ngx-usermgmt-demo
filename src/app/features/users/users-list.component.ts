@@ -35,13 +35,14 @@ export class UsersListComponent implements OnInit {
   }
 
   search(query: string) {
-    //if empty search then get back all users
-    if (query === '')
+    // if empty search then get back all users
+    if (query === '') {
       this.userService.getUsers().subscribe(
         (users) => this.users = users,
         (err) => console.log(err)
       );
-    //query back-end with search term
+    }
+    // query back-end with search term
     this.userService.searchUsers(query)
       .debounceTime(300)
       .distinctUntilChanged()

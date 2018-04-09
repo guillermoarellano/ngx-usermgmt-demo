@@ -21,12 +21,12 @@ export class CreateGroupComponent implements OnInit {
   }
 
   onSubmit(formValues) {
-    let newGroup: Group = {
+    const newGroup: Group = {
       id: 0,
       groupName: formValues.groupName,
       groupMembers: []
-    }
-    
+    };
+
     this.groupService.createGroup(newGroup).subscribe(
       (data) => console.log(data),
       (err) => console.log(err)

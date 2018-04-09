@@ -15,14 +15,14 @@ export class GroupService {
 
   constructor(private http: HttpClient) { }
 
-  //returns all groups
+  // returns all groups
   getGroups(): Observable<Group[]> {
     return this.http.get<Group[]>(this.baseUrl)
       .do(data => console.log('getGroups: ' + JSON.stringify(data)))
       .catch(this.handleError);
   }
 
-  //return one specific group
+  // return one specific group
   getGroup(id: number): Observable<Group> {
     const url = `${this.baseUrl}/${id}`;
     return this.http.get<Group>(url)
@@ -30,7 +30,7 @@ export class GroupService {
       .catch(this.handleError);
   }
 
-  //adds one group to Groups list
+  // adds one group to Groups list
   createGroup(group: Group) {
     group.id = undefined;
     return this.http.post<Group>(
@@ -46,7 +46,7 @@ export class GroupService {
       .catch(this.handleError);
   }
 
-  //delete one group from Groups list
+  // delete one group from Groups list
   deleteGroup(id: number): Observable<Response> {
     const url = `${this.baseUrl}/${id}`;
     return this.http.delete(
@@ -61,7 +61,7 @@ export class GroupService {
     .catch(this.handleError);
   }
 
-  //updates one Group's details
+  // updates one Group's details
   updateGroup(group: Group) {
     const url = `${this.baseUrl}/${group.id}`;
     return this.http.put(
@@ -77,8 +77,8 @@ export class GroupService {
     .catch(this.handleError);
   }
 
-  //add member into group
-  addUserIntoGroup(userId:number, groupId:number) {
+  // add member into group
+  addUserIntoGroup(userId: number, groupId: number) {
     this.getGroup(groupId).subscribe(
       (group) => {
         group.groupMembers.push(userId);
@@ -91,14 +91,14 @@ export class GroupService {
     );
   }
 
-  //remove member from group
-  deleteUserFromAllGroups(userId:number) {
-    //get all groups
+  // remove member from group
+  deleteUserFromAllGroups(userId: number) {
+    // get all groups
     this.getGroups().subscribe(
       (groups) => {
         groups.forEach(group => {
-          //for each group, see if user exists
-          //If so, then filter out user and update group in database
+          // for each group, see if user exists
+          // If so, then filter out user and update group in database
           if (this.userExistsInGroup(userId, group)) {
             group.groupMembers = group.groupMembers.filter(item => item !== userId);
             this.updateGroup(group).subscribe(
@@ -111,7 +111,7 @@ export class GroupService {
       (err) => console.log(err)
     );  }
 
-  //search for Groups using the back-end API
+  // search for Groups using the back-end API
   searchGroups(term: string): Observable<Group[]> {
     if (!term.trim()) {
       // if not search term, return empty Group array.
@@ -123,12 +123,13 @@ export class GroupService {
       .catch(this.handleError);
   }
 
-  //helper function to determine whether user is a member
+  // helper function to determine whether user is a member
   private userExistsInGroup(userId: number, queryGroup: Group): boolean {
-    if (queryGroup.groupMembers.indexOf(userId) > -1)
+    if (queryGroup.groupMembers.indexOf(userId) > -1) {
       return true;
-    else
+    } else {
       return false;
+    }
   }
 
   private handleError(error: HttpResponse<any>): Observable<any> {

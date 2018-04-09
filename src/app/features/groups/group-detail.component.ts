@@ -26,7 +26,7 @@ export class GroupDetailComponent implements OnInit {
     );
   }
 
-  cancel() { 
+  cancel() {
     this.router.navigate(['groups']);
   }
 

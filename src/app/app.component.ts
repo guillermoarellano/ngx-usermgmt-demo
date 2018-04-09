@@ -7,6 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'User Management App';
-  loading: boolean = true;
-  isCollapsed: boolean = true;
+  loading = true;
+  isCollapsed = true;
 }

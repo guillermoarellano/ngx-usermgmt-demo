@@ -25,7 +25,7 @@ export class CreateUserComponent implements OnInit {
               private userService: UserService) { }
 
   ngOnInit() {
-    //get all Groups defined in the database 
+    // get all Groups defined in the database
     this.groupService.getGroups().subscribe(
       (resp) => this.groups = resp,
       (err) => console.log(err)
@@ -37,25 +37,24 @@ export class CreateUserComponent implements OnInit {
   }
 
   updateChecked(chosenGroup: Group, event: any) {
-    //TODO: Figure how to use Event type instead of 'any'
-    //if the box is checked/unchecked, we only update the in-memory array.
+    // TODO: Figure how to use Event type instead of 'any'
+    // if the box is checked/unchecked, we only update the in-memory array.
     if (event.target.checked) {
-      //push the selected group's id to array of group ids
+      // push the selected group's id to array of group ids
       this.chosenGroupIds.push(chosenGroup.id);
-    }
-    else {
-      //filter the selected group id out of array of group ids
+    } else {
+      // filter the selected group id out of array of group ids
       this.chosenGroupIds = this.chosenGroupIds.filter(ids => ids !== chosenGroup.id);
     }
   }
 
   onSubmit(formValues) {
-    let newUser: User = {id: 0, userName:''}
+    const newUser: User = {id: 0, userName: ''};
     newUser.userName = formValues.userName;
-    
-    //add the new user, and after getting newly created
-    //id from database, loop through chosen group id's 
-    //to add user into each of those groups 
+
+    // add the new user, and after getting newly created
+    // id from database, loop through chosen group id's
+    // to add user into each of those groups
     this.userService.addUser(newUser).subscribe(
       (createdUser) => {
         this.chosenGroupIds.forEach(groupId =>

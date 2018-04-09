@@ -5,7 +5,7 @@ import { Group } from './features/groups/models/group.model';
 
 export class InMemoryDataService implements InMemoryDbService, InMemoryBackendConfig {
     createDb() {
-        let users: User[] = [
+        const users: User[] = [
             {
                 id: 1,
                 userName: 'Craig'
@@ -23,7 +23,7 @@ export class InMemoryDataService implements InMemoryDbService, InMemoryBackendCo
                 userName: 'Januz'
             }
         ];
-        let groups:Group[] = [
+        const groups: Group[] = [
             {
                 id: 1,
                 groupName: 'Alpha',

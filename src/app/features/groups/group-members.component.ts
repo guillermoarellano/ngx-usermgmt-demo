@@ -28,12 +28,12 @@ export class GroupMembersComponent implements OnInit {
 
   ngOnInit() {
     this.routeId = this.route.snapshot.params['groupId'];
-    //get the group to edit users membership
+    // get the group to edit users membership
     this.groupService.getGroup(+this.routeId).subscribe(
       (data) => this.group = data,
       (err) => console.log(err)
     );
-    //get all users defined in the database 
+    // get all users defined in the database
     this.userService.getUsers().subscribe(
       (resp) => this.users = resp,
       (err) => console.log(err)
@@ -45,22 +45,23 @@ export class GroupMembersComponent implements OnInit {
   }
 
   updateChecked(userId: number, event: any) {
-    //TODO: Figure how to use Event type instead of 'any'
-    //if the box is checked/unchecked, we only update the in-memory array.
-    if (event.target.checked) 
+    // TODO: Figure how to use Event type instead of 'any'
+    // if the box is checked/unchecked, we only update the in-memory array.
+    if (event.target.checked) {
       this.group.groupMembers.push(userId);
-    else
+    } else {
       this.group.groupMembers = this.group.groupMembers.filter(items => items !== userId);
     }
+  }
 
   onSubmit() {
-    //update database once user done editing users' membership in Group
+    // update database once user done editing users' membership in Group
     this.groupService.updateGroup(this.group).subscribe(
       () => true,
       (err) => console.log(err)
     );
 
-    //go back to group details screen
+    // go back to group details screen
     this.router.navigate(['groups', this.routeId]);
   }
 

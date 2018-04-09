@@ -16,14 +16,14 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  //returns all users
+  // returns all users
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.baseUrl)
       .do(data => console.log('getUsers: ' + JSON.stringify(data)))
       .catch(this.handleError);
   }
 
-  //return one specific user
+  // return one specific user
   getUser(id: number): Observable<User> {
     const url = `${this.baseUrl}/${id}`;
     return this.http.get<User>(url)
@@ -31,8 +31,8 @@ export class UserService {
       .catch(this.handleError);
   }
 
-  //TODO: respond with a observable<User>, rename to createUser
-  //adds one user to users list
+  // TODO: respond with a observable<User>, rename to createUser
+  // adds one user to users list
   addUser(user: User) {
     user.id = undefined;
     return this.http.post<User>(
@@ -48,8 +48,8 @@ export class UserService {
       .catch(this.handleError);
   }
 
-  //TODO: rename to deleteUser
-  //removes one user from users list
+  // TODO: rename to deleteUser
+  // removes one user from users list
   removeUser(id: number): Observable<Response> {
     const url = `${this.baseUrl}/${id}`;
     return this.http.delete(
@@ -64,7 +64,7 @@ export class UserService {
     .catch(this.handleError);
   }
 
-  //updates one user's details
+  // updates one user's details
   updateUser(user: User) {
     const url = `${this.baseUrl}/${user.id}`;
     return this.http.put(
@@ -80,7 +80,7 @@ export class UserService {
     .catch(this.handleError);
   }
 
-  //search for Users using the back-end API
+  // search for Users using the back-end API
   searchUsers(term: string): Observable<User[]> {
     if (!term.trim()) {
       // if not search term, return empty User array.

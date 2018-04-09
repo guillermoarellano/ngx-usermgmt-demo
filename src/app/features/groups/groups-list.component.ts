@@ -30,13 +30,14 @@ export class GroupsListComponent implements OnInit {
   }
 
   search(query: string) {
-    //if empty search then get back all Groups
-    if (query === '')
+    // if empty search then get back all Groups
+    if (query === '') {
       this.groupService.getGroups().subscribe(
         (users) => this.groups = users,
         (err) => console.log(err)
       );
-    //query back-end with search term
+    }
+    // query back-end with search term
     this.groupService.searchGroups(query)
       .debounceTime(300)
       .distinctUntilChanged()

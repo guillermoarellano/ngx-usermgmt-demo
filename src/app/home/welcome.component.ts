@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class WelcomeComponent implements OnInit {
-  pageTitle = "Welcome";
+  pageTitle = 'Welcome';
 
   constructor() { }
 
