@@ -8,11 +8,11 @@ export class InMemoryDataService implements InMemoryDbService, InMemoryBackendCo
         let users: User[] = [
             {
                 id: 1,
-                userName: 'Bob'
+                userName: 'Craig'
             },
             {
                 id: 2,
-                userName: 'Charles'
+                userName: 'Lisa'
             },
             {
                 id: 3,

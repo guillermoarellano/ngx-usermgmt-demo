@@ -1,3 +1,15 @@
-<p>
-  users-list works!
-</p>
+<div>
+    <h4>Users List</h4>
+    <div class="clearfix">
+      <button type="button" class="btn btn-primary float-right" [routerLink]="['/users/new']">Add New User</button>
+    </div>
+    <h6>Search Users</h6>
+    <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+    <hr>
+    <ul class="list-group" *ngFor="let user of users">
+      <li class="list-group-item">
+        <a [routerLink]="['/users', user.id]">{{user.userName}}</a> 
+        <button type="button" class="btn btn-danger btn-sm float-right" (click)="deleteUser(user)">Remove</button>
+      </li>
+    </ul>
+</div>
