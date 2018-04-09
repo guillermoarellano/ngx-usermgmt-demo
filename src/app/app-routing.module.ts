@@ -14,7 +14,7 @@ const routes: Routes = [
     loadChildren: 'app/features/groups/group.module#GroupModule'
   },
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
-//   { path: '**', component: PageNotFoundComponent } TODO
+//TODO { path: '**', component: PageNotFoundComponent } 
 ];
 
 @NgModule({

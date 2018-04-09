@@ -6,11 +6,11 @@ import { CollapseModule } from 'ngx-bootstrap';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 // import { InMemoryDataService } from './in-memory-data.service';
 
-// import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-// import { routedComponents } from './app-routing.module';
-// import { UserService } from './features/users/services/user.service';
-// import { GroupService } from './features/groups/services/group.service';
+import { routedComponents } from './app-routing.module';
+import { UserService } from './features/users/services/user.service';
+import { GroupService } from './features/groups/services/group.service';
 
 
 @NgModule({
@@ -18,16 +18,16 @@ import { AppComponent } from './app.component';
     BrowserModule,
     HttpClientModule,
     CollapseModule,
-    // AppRoutingModule,
+    AppRoutingModule,
     // HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService)
   ],
   declarations: [
     AppComponent,
-    // routedComponents,
+    routedComponents,
   ],
   providers: [
-    // UserService,
-    // GroupService
+    UserService,
+    GroupService
   ],
   bootstrap: [AppComponent]
 })
