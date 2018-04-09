@@ -1,3 +1,13 @@
-<p>
-  user-detail works!
-</p>
+<div>
+    <h4>Update Existing User</h4>
+    <form #f="ngForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="userName">User Name:</label>
+        <input type="text" class="form-control" id="userName" placeholder="Enter User Name..." [(ngModel)]="user.userName" name="userName" required>
+      </div>
+      <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
+      <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Update</button>
+    </form>
+    <h5>User's Groups Membership Count: <span class="badge badge-success">{{usersGroups?.length}}</span></h5>
+    <button type="button" class="btn btn-outline-info" (click)="goToUserMemberships()">Edit User's Group Membership</button>
+</div>
