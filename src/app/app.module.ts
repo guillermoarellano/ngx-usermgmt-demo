@@ -17,7 +17,7 @@ import { GroupService } from './features/groups/services/group.service';
   imports: [
     BrowserModule,
     HttpClientModule,
-    CollapseModule,
+    CollapseModule.forRoot(),
     AppRoutingModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService)
   ],
