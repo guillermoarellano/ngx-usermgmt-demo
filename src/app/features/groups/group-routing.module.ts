@@ -12,4 +12,4 @@ const routes: Routes = [];
   exports: [RouterModule],
   declarations: [CreateGroupComponent, GroupDetailComponent, GroupMembersComponent, GroupsListComponent]
 })
-export class GroupModuleRoutingModule { }
+export class GroupRoutingModule { }
